@@ -4,8 +4,8 @@
 
 LowPassFilter::LowPassFilter() : Filter(), cutoffFreq(0.0) {}
 
-LowPassFilter::LowPassFilter(int order, const std::string& type, double cutoffFreq)
-    : Filter(order, type) {
+LowPassFilter::LowPassFilter(int order, const std::string& type, double minTemp, double maxTemp, double cutoffFreq)
+    : Filter(order, type, minTemp, maxTemp) {
     setCutoffFreq(cutoffFreq);
 }
 
@@ -37,4 +37,3 @@ void LowPassFilter::print() const {
     Filter::print();
     std::cout << "Частота зрізу: " << cutoffFreq << " Гц\n";
 }
-
