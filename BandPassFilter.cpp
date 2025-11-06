@@ -4,8 +4,8 @@
 
 BandPassFilter::BandPassFilter() : Filter(), lowFreq(0.0), highFreq(0.0) {}
 
-BandPassFilter::BandPassFilter(int order, const std::string& type, double lowFreq, double highFreq)
-    : Filter(order, type) {
+BandPassFilter::BandPassFilter(int order, const std::string& type, double minTemp, double maxTemp, double lowFreq, double highFreq)
+    : Filter(order, type, minTemp, maxTemp) {
     setLowFreq(lowFreq);
     setHighFreq(highFreq);
 }
@@ -31,7 +31,6 @@ void BandPassFilter::input() {
     Filter::input();
 
     double lf, hf;
-
     std::cout << "Введіть нижню частоту смуги (Гц): ";
     while (!(std::cin >> lf) || !setLowFreq(lf)) {
         std::cin.clear();
