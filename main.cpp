@@ -11,6 +11,7 @@ void showMenu() {
               << "2. Додати смуговий фільтр (СФ)\n"
               << "3. Показати всі фільтри\n"
               << "4. Видалити останній\n"
+              << "5. Показати середній діапазон робочих температур\n"
               << "0. Вихід\n"
               << "Ваш вибір: ";
 }
@@ -49,6 +50,21 @@ int main() {
             } else {
                 std::cout << "Немає фільтрів для видалення.\n";
             }
+        } else if (choice == 5) {
+            if (filters.empty()) {
+                std::cout << "Список фільтрів порожній.\n";
+            } else {
+                double totalMin = 0;
+                double totalMax = 0;
+                for (const auto& f : filters) {
+                    totalMin += f->getMinTemp();
+                    totalMax += f->getMaxTemp();
+                }
+                double avgMin = totalMin / filters.size();
+                double avgMax = totalMax / filters.size();
+                std::cout << "Середній мінімальний діапазон: " << avgMin << " °C\n";
+                std::cout << "Середній максимальний діапазон: " << avgMax << " °C\n";
+            }
         } else if (choice != 0) {
             std::cout << "Невірний вибір. Спробуйте ще раз.\n";
         }
@@ -58,4 +74,3 @@ int main() {
     std::cout << "Програма завершена.\n";
     return 0;
 }
-
