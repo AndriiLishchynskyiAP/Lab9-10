@@ -7,7 +7,7 @@ private:
 
 public:
     LowPassFilter();
-    LowPassFilter(int order, const std::string& type, double cutoffFreq);
+    LowPassFilter(int order, const std::string& type, double minTemp, double maxTemp, double cutoffFreq);
     ~LowPassFilter();
 
     bool setCutoffFreq(double freq);
@@ -16,4 +16,3 @@ public:
     void input() override;
     void print() const override;
 };
-
