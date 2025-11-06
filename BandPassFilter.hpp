@@ -8,7 +8,7 @@ private:
 
 public:
     BandPassFilter();
-    BandPassFilter(int order, const std::string& type, double lowFreq, double highFreq);
+    BandPassFilter(int order, const std::string& type, double minTemp, double maxTemp, double lowFreq, double highFreq);
     ~BandPassFilter();
 
     bool setLowFreq(double freq);
@@ -20,4 +20,3 @@ public:
     void input() override;
     void print() const override;
 };
-
